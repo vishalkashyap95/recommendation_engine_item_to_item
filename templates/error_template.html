@@ -1,0 +1,66 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="utf-8">-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>-->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>-->
+
+    <!--<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet"-->
+          <!--type="text/css"/>-->
+    <!--<title>Product Search Page</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<form action='{{url_for("homePage")}}' method="post">-->
+    <!--<input type="text" id="productSearchBox" name="searchPrdName" class="form-control" placeholder="Enter Product name here" required/>-->
+    <!--<button type="submit" value="Search">Search</button>-->
+    <!--<script>-->
+  <!--$( function() {-->
+    <!--var availableProducts = [-->
+        <!--{% for product in product_names %}-->
+            <!--"{{product}}",-->
+        <!--{% endfor %}-->
+    <!--];-->
+    <!--$( "#productSearchBox" ).autocomplete({-->
+      <!--source: availableProducts-->
+    <!--});-->
+  <!--} );-->
+  <!--</script>-->
+        <!--<ul><li>No product found, Please search product with exact name for accurate recommendation.</li></ul>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <title>Product Search Page</title>
+</head>
+<body>
+
+<form action='{{url_for("homePage")}}' method="post">
+    <input type="text" id="productSearchBox" name="searchPrdName" class="form-control"
+           placeholder="Enter Product name here" required/>
+    <button type="submit" value="Search">Search</button>
+    <script>
+  $( function() {
+    var availableProducts = [
+        {% for product in product_names %}
+            "{{product}}",
+        {% endfor %}
+    ];
+    $( "#productSearchBox" ).autocomplete({
+      source: availableProducts
+    });
+  } );
+
+    </script>
+    <ul><li>No product found, Please search product with exact name for accurate recommendation.</li></ul>
+</form>
+</body>
+</html>
