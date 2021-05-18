@@ -6,13 +6,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <title>Product Search Page</title>
+        <style>
+        .button {
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #00cc00}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+            div {
+    height: 768px;
+    background: linear-gradient(to top left, #ff99cc 0%, #ccffff 100%)
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th {
+padding: 15px;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type=text]{
+    width:50%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+    </style>
 </head>
 <body>
-
+<div>
 <form action='{{url_for("homePage")}}' method="post">
-    <input type="text" id="productSearchBox" name="searchPrdName" class="form-control"
+    <center><input type="text" id="productSearchBox" name="searchPrdName" class="form-control"
            placeholder="Enter Product name here" required/>
-    <button type="submit" value="Search">Search</button>
+    <button class = "button" type="submit" value="Search">Search</button></center>
+<br><br>
+
     <script>
   $( function() {
     var availableProducts = [
@@ -27,10 +84,14 @@
 
     </script>
 </form>
- <ul>
+    <table class="center"><thead><th>People also bought below products, these are the highly recommended products</th></thead>
+        <tbody>
+
     {% for item in data %}
-        <li>{{item}}</li>
+    <tr><td>{{item}}</td></tr>
     {% endfor %}
-    </ul>
+        </tbody>
+        </table>
+    </div>
 </body>
 </html>

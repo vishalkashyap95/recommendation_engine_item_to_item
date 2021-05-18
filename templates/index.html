@@ -4,16 +4,63 @@
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
     <title>Product Search Page</title>
+    <style>
+
+    .button {
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #00cc00}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+    div {
+    height: 768px;
+    background: linear-gradient(to top left, #ff99cc 0%, #ccffff 100%)
+}
+
+input[type=text]{
+    width:50%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+
+  input[type=text]:focus{
+    border-color:dodgerBlue;
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+    </style>
 </head>
 <body>
-
-<form action='{{url_for("homePage")}}' method="post">
-    <input type="text" id="productSearchBox" name="searchPrdName" class="form-control"
-           placeholder="Enter Product name here" required/>
-    <button type="submit" value="Search">Search</button>
-    <script>
+<div>
+    <!--<div class="myDiv">-->
+        <form action='{{url_for("homePage")}}' method="post">
+        <center><input type="text" id="productSearchBox" name="searchPrdName" class="form-control" placeholder="Enter Product name here" required/>
+        <button class = "button" type="submit" value="Search">Search</button></center>
+    <!--</div>-->
+    <!--<div class="myDiv">-->
+        <script>
   $( function() {
     var availableProducts = [
         {% for product in product_names %}
@@ -24,7 +71,10 @@
       source: availableProducts
     });
   } );
+
     </script>
+    <!--</div>-->
 </form>
+    </div>
 </body>
 </html>
