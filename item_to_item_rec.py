@@ -13,7 +13,7 @@ class Check_corr():
         self.ratings_utility_matrix = None
 
     def check_corr(self, productId):
-        print("corr method called.")
+        print("Training model.")
         self.ratings_utility_matrix = self.amazon_ratings.pivot_table(values='Rating', index='UserID',
                                                                       columns='ProductID',
                                                                       fill_value=0)
@@ -37,7 +37,7 @@ class Check_corr():
             Recommend = list(self.X.index[correlation_product_ID > 0.90])
             Recommend.remove(productId[0])
             recommended_product_id = Recommend[0:10]
-            print(recommended_product_id)
+            # print(recommended_product_id)
             recommended_product_names = self.amazon_ratings.Product_Title[
                 self.amazon_ratings.ProductID.isin(recommended_product_id)].unique()
             return recommended_product_names

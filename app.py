@@ -14,8 +14,8 @@ def homePage():
 
     if request.method == "POST":
         searchedProductName = request.form.get("searchPrdName")
-        print(searchedProductName)
-        print(corr.trained)
+        # print(searchedProductName)
+        print(f'Is model trained? - {corr.trained}')
         if not corr.trained:
             corr.check_corr(searchedProductName)
 
@@ -27,4 +27,4 @@ def homePage():
     return render_template("index.html",product_names = product_names)
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(host="0.0.0.0")
